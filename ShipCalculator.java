@@ -7,6 +7,7 @@ credit goes to Klorn and dseehafer for the datamined math*/
 public class ShipCalculator{
 	public static void main(String[] args){
 		Scanner in = new Scanner(System.in);
+		//hello constants :)
 		double bbrate = 1.1812;
 		double carate = 1.8631;
 		double ddrate = 4.4907;
@@ -42,7 +43,10 @@ public class ShipCalculator{
 		System.out.println("what is the ship class? 1 = BB, 2 = CA, 3 = DD, 4 = CV. ");
 		int a = in.nextInt();
 		// Identifies the next part of the code that is needed.
-		if (!(a == 4)){
+		if (a == 4){
+			// Carriers
+			hp = (cvrate * d) + cvcon;
+		}else{
 			System.out.println("What is the AP Shell mass? ");
 			apm = in.nextDouble();
 			System.out.println("what is the AP muzzle velosity? ");
@@ -54,45 +58,36 @@ public class ShipCalculator{
 			System.out.println("what is the caliber? ");
 			cal = in.nextDouble();
 			apdmg = apdmgcon * Math.pow((apm * apmv), apdmgexp);
+			// Max AP Damage.
 			appen = (pencon * Math.pow(apmv, mvexp) * Math.pow(apm, massexp)) / Math.pow(cal, calexp);
+			// AP pen at 0m.
 			hedmg = hedmgcon * Math.pow((hem * hebc), hedmgexp);
+			// Max AP Damage.
 			fire = heburncon * Math.pow(hebc, heburnexp);
+			// HE firechance.
 			// You'll need these values if the ship isn't a CV, reguardless of class. Torps to be added.
-			if (a == 1){ 
-				// Battleships
+			if (a == 1){
 				hp = (d * bbrate) + bbcon;
-				// the HP rates and constants are different for each ship class.
 				System.out.println("HP is: " + hp);
 				System.out.println("AP damage is: " + apdmg);
 				System.out.println("AP pen is: " + appen + "mm @ 0m.");
 				System.out.println("HE damage is: " + hedmg);
 				System.out.println("HE fire chance is: " + fire + "%");
-			}else{
-				if (a == 2){ 
-					// Cruisers
-					hp = (d * carate) + cacon;	
-					System.out.println("HP is: " + hp);
-					System.out.println("AP damage is: " + apdmg);
-					System.out.println("AP pen is: " + appen + "mm @ 0m.");
-					System.out.println("HE damage is: " + hedmg);
-					System.out.println("HE fire chance is: " + fire + "%");
-				}else{
-					if (a == 3){ 
-						// Destroyers
-						hp = (d * ddrate) + ddcon;
-						System.out.println("HP is: " + hp);
-						System.out.println("AP damage is: " + apdmg);
-						System.out.println("AP pen is: " + appen + "mm @ 0m.");
-						System.out.println("HE damage is: " + hedmg);
-						System.out.println("HE fire chance is: " + fire + "%");
-					}
-				}
+			}else if (a == 2){
+				hp = (d * carate) + cacon;
+				System.out.println("HP is: " + hp);
+				System.out.println("AP damage is: " + apdmg);
+				System.out.println("AP pen is: " + appen + "mm @ 0m.");
+				System.out.println("HE damage is: " + hedmg);
+				System.out.println("HE fire chance is: " + fire + "%");
+			}else if (a == 3){
+				hp = (d * ddrate) + ddcon;
+				System.out.println("HP is: " + hp);
+				System.out.println("AP damage is: " + apdmg);
+				System.out.println("AP pen is: " + appen + "mm @ 0m.");
+				System.out.println("HE damage is: " + hedmg);
+				System.out.println("HE fire chance is: " + fire + "%");
 			}
-		}else{
-			// Carriers
-			hp = (cvrate * d) + cvcon;
-			System.out.println("HP is: " + hp);
-			// If the Ship is a CV, you don't need things like guns.
 		}	
 	}
 }
