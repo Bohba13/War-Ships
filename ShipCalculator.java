@@ -46,6 +46,7 @@ public class ShipCalculator{
 		if (a == 4){
 			// Carriers
 			hp = (cvrate * d) + cvcon;
+			System.out.println("HP is: " + hp);
 		}else{
 			System.out.println("What is the AP Shell mass? ");
 			apm = in.nextDouble();
